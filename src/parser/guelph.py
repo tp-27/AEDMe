@@ -38,18 +38,23 @@ def parse_mcmaster():
     table = soup.find_all('tr')
 
     location_data = ['']
-    i = 0
     table_row = soup.find_all('td')
     
+    #only need building and location
+    #building column some have child element with text field, some have text field within td 
     with open('mcmaster.csv', 'w', newline='') as file:
         writer = csv.writer(file)
+        i = 0
         for row in table_row:
-            if i == 4:
-                writer.writerow([location_data[0], location_data[1], location_data[2], location_data[3]])
-                i = 0
-
-            location_data.append(row.text)
-            print(location_data[i])
+            if (i > 0) and (i <= 2):
+                location_data.append(row.text)
+                # print(location_data[i])
+                if i == 2:
+                    writer.writerow([location_data[0], location_data[1]])
+                    i = 0
+                    location_data.clear()
+                    continue
+ 
             i += 1
 
 
