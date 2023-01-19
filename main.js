@@ -3,6 +3,7 @@ const optionsContainer = document.querySelector(".options-container");
 const listOptions = document.querySelectorAll(".option");
 
 let map = document.querySelector("map");
+let googleMap = document.createElement("iframe");
 let mapStatus = "off";
 
 // Adding and removing options panel
@@ -34,42 +35,41 @@ function isMapOpen() {
 // Add action listener to <a> , retrieve which label is selected and display map
 function mapOpen(university) {
     // FIX ME: remove map if exists - displays two maps instead of one 
-    let googleMap = document.createElement("iframe");
-    googleMap.src = "https://www.google.com/maps/d/u/0/embed?mid=1SV3wkaPMxAM73jmbt37518-bN0wS7pg&ehbc=2E312F";
+    // googleMap.src = "https://www.google.com/maps/d/u/0/embed?mid=1SV3wkaPMxAM73jmbt37518-bN0wS7pg&ehbc=2E312F";
     googleMap.style.height = "480px";
     googleMap.style.width = "640px";
 
     mapStatus = "on";
-        // switch(university) {
-        //     case "guelph": 
-        //         map.src = "https://www.google.com/maps/d/u/0/viewer?mid=10R-9p0w9a0FVXovNiuJzrygB_3w&ll=43.534514775651104%2C-80.22755028221935&z=15";
-        //         break;
+    switch(university) {
+        case "guelph": 
+            googleMap.src = "https://www.google.com/maps/d/u/0/embed?mid=1SV3wkaPMxAM73jmbt37518-bN0wS7pg&ehbc=2E312F";
+            break;
+    
+        case "toronto":
+            googleMap.src = "https://www.google.com/maps/d/embed?mid=1m09YD9gbeu4nXdA8NY_O5QdqQW3F538&ehbc=2E312F";
+            break;
+    }
+    //     case "laurier":
 
-        //     case "waterloo":
-        //         map.src = "https://www.google.com/maps/place/University+of+Waterloo/@43.4722854,-80.5470409,17z/data=!3m1!4b1!4m5!3m4!1s0x882bf6ad02edccff:0xdd9df23996268e17!8m2!3d43.4722854!4d-80.5448576";
-        //         break;
+    //         break;
 
-        //     case "laurier":
+    //     case "western":
 
-        //         break;
+    //         break;
 
-        //     case "western":
+    //     case "mcmaster":
 
-        //         break;
+    //         break;
 
-        //     case "mcmaster":
+    //     case "toronto":
 
-        //         break;
+    //         break;
 
-        //     case "toronto":
+    //     case "brock":
 
-        //         break;
-
-        //     case "brock":
-
-        //         break;
-            
-        // }
+    //         break;
+        
+    // }
     
     document.body.appendChild(googleMap);
 }
