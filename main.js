@@ -1,12 +1,10 @@
+// Adding and removing options panel
 const selected = document.querySelector(".selected");
 const optionsContainer = document.querySelector(".options-container");
 const listOptions = document.querySelectorAll(".option");
+const container = document.querySelector(".container");
+let map;
 
-let map = document.querySelector("map");
-let googleMap = document.createElement("iframe");
-let mapStatus = "off";
-
-// Adding and removing options panel
 selected.addEventListener("click", () => {
     optionsContainer.classList.toggle("active");
 });
@@ -19,57 +17,62 @@ listOptions.forEach(options => {
 
         // find id of university selected
         const input = options.querySelector(".radio");
-        isMapOpen();
-        mapOpen(input.id);     
+        map = initMap(input.id);  
+        addmarkers(input.id, map);      
+        
+        // move selection box
+        container.style.justifyContent = 'flex-start';
     })
 })
 
-function isMapOpen() {
-    if (mapStatus === "on") {
-        let currentMap = document.querySelector(".iframe");
-        body.removeChild(currentMap);
-        mapStatus = "off";
+// Map functions
+function initMap(university) {
+    let campus; 
+
+    switch(university) {
+        case "guelph":
+            campus = { lat: 43.5327217, lng: -80.2261804 };
+            break;
+
+        case "waterloo":
+            campus = { lat: 43.4723, lng: -80.5449 };
+            break;
+
+        case "laurier":
+            campus = { lat: 43.4738, lng: -80.5275 };
+            break;
+
+        case "western":
+            campus = { lat: 43.0096, lng: -81.2737 };
+            break;
+
+        case "mcmaster":
+            campus = { lat: 43.2609, lng: -79.91912};
+            break;
+
+        case "toronto":
+            campus = { lat: 43.6629, lng:  -79.3957 };
+            break;
+    
+        case "brock":
+            campus = { lat: 43.1176, lng: -79.2477 };
+            break;
+
     }
+
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 15,
+        center: campus,
+        
+    });
+
+    addMarkers(university); 
 }
 
-// Add action listener to <a> , retrieve which label is selected and display map
-function mapOpen(university) {
-    // FIX ME: remove map if exists - displays two maps instead of one 
-    // googleMap.src = "https://www.google.com/maps/d/u/0/embed?mid=1SV3wkaPMxAM73jmbt37518-bN0wS7pg&ehbc=2E312F";
-    googleMap.style.height = "480px";
-    googleMap.style.width = "640px";
-
-    mapStatus = "on";
-    switch(university) {
-        case "guelph": 
-            googleMap.src = "https://www.google.com/maps/d/u/0/embed?mid=1SV3wkaPMxAM73jmbt37518-bN0wS7pg&ehbc=2E312F";
-            break;
-    
-        case "toronto":
-            googleMap.src = "https://www.google.com/maps/d/embed?mid=1m09YD9gbeu4nXdA8NY_O5QdqQW3F538&ehbc=2E312F";
-            break;
-    }
-    //     case "laurier":
-
-    //         break;
-
-    //     case "western":
-
-    //         break;
-
-    //     case "mcmaster":
-
-    //         break;
-
-    //     case "toronto":
-
-    //         break;
-
-    //     case "brock":
-
-    //         break;
-        
-    // }
-    
-    document.body.appendChild(googleMap);
+function addMarkers(university) {
+    marker = new google.maps.Marker({
+        position: {lat: 43.5294, lng: -80.2277},
+        map,
+        title: "Hello World!",
+      });
 }
