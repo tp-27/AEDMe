@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.middle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.closest-locations {
+    height: 500px;
+    width: 500px;
+    border: 3px grey solid;
+}
+
+#map {
+    height: 500px;
+    width: 700px;
+    position: relative;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+    margin-top: 50px;
+    padding: 32px;
+    padding-bottom: 200px;
+    height: 200px;
+}
+
+.select-box {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+
+}
+
+.select-box .options-container {
+    background: #8a1515;
+    color: #f5f6fa;
+    max-height: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.4s;
+    border-radius: 8px;
+    overflow: hidden;
+
+    order: 1;
+}
+
+.selected {
+    background: #8a1515;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    color: #f5f6fa;
+    position: relative;
+
+    order: 0;
+}
+
+.selected::after {
+    content: "";
+    background: url("./images/arrow-down.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    height: 100%;
+    width: 32px;
+    right: 10px;
+    top: 5px;
+
+    transition: all 0.4s;
+}
+
+.select-box .options-container.active {
+    max-height: 240px;
+    opacity: 1;
+    overflow-y: scroll; /* adds scroll bar */
+}
+
+/* makes changes to after selected div '+' because the selected div is after options container */
+.select-box .options-container.active + .selected::after {
+    transform: rotateX(180deg); /* rotates arrow */
+    top: -6px;
+}
+
+/* styling scroll bar */
+.select-box .options-container::webkit-scrolbar {
+    width: 8px;
+    background: #0d141f;
+    border-radius: 0 8px 8px 0;
+}
+
+.select .options-container::webkit-scrollbar-thumb {
+    background: #525861;
+}
+
+.select-box .option,
+.selected {
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+/* background color when we hover over option */
+.select-box .option:hover {
+    background: #600505;
+}
+
+
+.select-box label {
+    cursor: pointer;
+}
+
+.select-box .option .radio {
+    display: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+}

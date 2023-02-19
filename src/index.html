@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title>Add Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="module" src="./main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+            <h2>Where are you?</h2>
+
+            <div class="select-box">
+                <div class="options-container">
+                    <div class="option">
+                        <input type="radio" class="radio" id="guelph" name="category">
+                        <label for="guelph">University of Guelph</a></label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" class="radio" id="waterloo" name="category">
+                        <label for="waterloo">University of Waterloo</label>
+                    </div>
+            
+                    <div class="option">
+                        <input type="radio" class="radio" id="laurier" name="category">
+                        <label for="laurier">Laurier University</label>
+                    </div>
+            
+                    <div class="option">
+                        <input type="radio" class="radio" id="western" name="category">
+                        <label for="western">Western University</label>
+                    </div>
+            
+                    <div class="option">
+                        <input type="radio" class="radio" id="mcmaster" name="category">
+                        <label for="mcmaster">McMaster University</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" class="radio" id="toronto" name="category">
+                        <label for="toronto">University of Toronto</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" class="radio" id="brock" name="category">
+                        <label for="brock">Brock University</label>
+                    </div>
+                </div>
+
+                <div class="selected">
+                    Select your university
+                </div>
+
+            </div>
+    </div>
+    
+    <!-- The div element for the map -->
+    <div class="middle-container">
+      <!-- <div class="closest-locations"></div> -->
+      <div id="map"></div>
+    </div>
+
+
+    <!-- 
+      The `defer` attribute causes the callback to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises
+      with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+      -->
+    <script 
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzGghxXBLge_jHypQILU7-1evtXjBIUio"
+      defer
+    ></script>
+  </body>
+</html>
