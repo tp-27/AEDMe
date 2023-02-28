@@ -27,7 +27,7 @@ options.forEach(option => {
 
 checkbox.addEventListener('change', function() {
     if(this.checked) {
-        const url = `map.html?campus=${selectedCampus}`;
+        const url = `./map.html?campus=${selectedCampus}`;
         window.location.href = url;
     }
 });
