@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Geocoding</title>
+        <link rel="stylesheet" href="./map_style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css">
+        <script type="text/javascript" src="map.js"></script>
+    </head>
+    <body>
+        <div class="navigation">
+            <div class="aed-me"><a href="home_page.html">AEDMe</a></div>
+            <div class="nav-item">Learn More</div>
+            <div class="nav-item">About</div>
+            <div class="nav-item">Register your school</div>
+        </div>
+
+        <div class="geo-locate-button">
+            <span class="switch">
+                <input type="checkbox" id="switcher">
+                <label for="switcher"></label>
+            </span>
+        </div>
+       
+        <div class="container">
+            <div id="locations">
+                <button type="button" id="find_aed">Find AED!</button>
+            </div>
+            <div id="map"></div>
+        </div>
+
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzGghxXBLge_jHypQILU7-1evtXjBIUio&callback=initMap"
+        defer
+      ></script>
+    </body>
+</html>

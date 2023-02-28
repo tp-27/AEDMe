@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.select-menu{
+    width: 400px;
+    height: 100px;
+    /* margin: 150px auto; */
+    padding-bottom: 50px;
+    z-index: 3;
+}
+
+.select-menu .select-btn{
+    display: flex;
+    height: 55px;
+    background: #8a1515;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 8px;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+
+}
+
+.option {
+    list-style-type: none;
+}
+
+.sBtn-text {
+    color:white;
+}
+
+.select-btn i{
+    font-size: 25px;
+    transition: 0.3s
+}
+.select-menu.active .select-btn i{
+    transform: rotate(-180deg);
+}
+
+.select-menu .options{
+    position: relative;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    background: white;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+    display: none;
+}
+
+.select-menu.active .options{
+    display: block;
+}
+
+.options .option{
+    display: flex;
+    height: 55px;
+    cursor: pointer;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 8px;
+    background: white;
+}
+
+.options .option:hover{
+    background: #f2f2f2;
+}
+
+.option .option-text{
+    font-size: 18px;
+    color: #333;
+}
+
+.navigation {
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #8a1515;
+}
+
+.nav-item {
+    color: white;
+    font-size: 14px;
+}
+
+body {
+    background-color: #e5e8ed;
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    max-width: 100px;
+    height: auto;
+}
+
+.university{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    /* border: 2px red solid; */
+}
+
+.option {
+    color:black;
+}
+
+.middle-section {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.aed-me {
+    padding-top: 60px;
+    font-size: 45px;
+}
+
+.aed-clickable {
+    margin-top: 300px;
+    height: 200px;
+    width: 200px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* gap: 10px; */
+    align-items: center;
+    margin-top: 50px;
+    /* padding: 32px; */
+    padding-bottom: 200px;
+    height: 200px;
+}
+
+.select-box {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+
+}
+
+.select-box .options-container {
+    background: #8a1515;
+    color: #f5f6fa;
+    max-height: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.4s;
+    border-radius: 8px;
+    overflow: hidden;
+
+    order: 1;
+}
+
+.selected {
+    background: #8a1515;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    color: #f5f6fa;
+    position: relative;
+
+    order: 0;
+}
+
+.selected::after {
+    content: "";
+    background: url("./images/arrow-down.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    height: 100%;
+    width: 32px;
+    right: 10px;
+    top: 5px;
+
+    transition: all 0.4s;
+}
+
+.select-box .options-container.active {
+    max-height: 240px;
+    opacity: 1;
+    overflow-y: scroll; /* adds scroll bar */
+}
+
+/* makes changes to after selected div '+' because the selected div is after options container */
+.select-box .options-container.active + .selected::after {
+    transform: rotateX(180deg); /* rotates arrow */
+    top: -6px;
+}
+
+/* styling scroll bar */
+.select-box .options-container::webkit-scrolbar {
+    width: 8px;
+    background: #0d141f;
+    border-radius: 0 8px 8px 0;
+}
+
+.select .options-container::webkit-scrollbar-thumb {
+    background: #525861;
+}
+
+.select-box .option,
+.selected {
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+/* background color when we hover over option */
+.select-box .option:hover {
+    background: #600505;
+}
+
+
+.select-box label {
+    cursor: pointer;
+}
+
+.select-box .option .radio {
+    display: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+}
+
+#checkbox{ 
+    padding-top: 50px;
+}
+
+
+input[type="checkbox"] {
+    -webkit-appearence:none;
+    appearance: none;
+    height: 120px;
+    width: 120px;
+    background: linear-gradient(
+        to top,
+        #fafafa,
+        #d0d3d8
+    );
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+}
+
+input[type="checkbox"]:before {
+    position: absolute;
+    content:"";
+    height: 180px;
+    width: 180px;
+    background: linear-gradient(
+        to bottom,
+        #fafafa,
+        #d0d3d8
+    );
+    border-radius: 50%;
+    z-index: -1;
+    bottom: -30px;
+    left: -30px;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+input[type="checkbox"]:after{
+    position: absolute;
+    content: "";
+    height: 210px;
+    width: 210px;
+    background: #d6dce3;
+    bottom: -45px;
+    left: -45px;
+    z-index: -2;
+    border-radius: 50%;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
+} 
+
+label{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+
+label > .fa-solid{
+    font-size: 50px;
+    color: #a8aaba;
+} 
+
+input[type="checkbox"]:checked + label > .fa-solid{
+    color: #8a1515;
+}
+
+input[type="checkbox"]:checked:after{
+    background: linear-gradient(
+        -135deg,
+        #8a061ebd,
+        #8a1515
+    );
+}  
+
+label > .fa-solid:hover{
+    color: #8a1515;
+}
+
+a {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    padding: 5em;
+    margin: -2em;
+  }

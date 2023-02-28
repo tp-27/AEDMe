@@ -1,0 +1,40 @@
+#map {
+    height: 80%;
+    width: 50%;
+}
+
+#locations {
+    height: 80%;
+    width: 50%;
+    border: 3px red solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#find_aed {
+    background-color: rgb(142, 6, 6);
+    /* border: none; */
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none; 
+    /* /* display: inline-block; */
+    font-size: 16px;
+}
