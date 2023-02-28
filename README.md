@@ -117,19 +117,23 @@ This application displays to the user all of the nearest AEDs found on a selecte
 ## Usage
 
 * Select a university campus
-<img src="model_img/select_screenshot.png>
+[![Product Name Screen Shot][product-screenshot2]](https://example.com)
+
 
 * Click locate button
-<img src="model_img/button_screenshot.png>
+[![Product Name Screen Shot][product-screenshot3]](https://example.com)
+
 
 * Toggle geolocate button
-<img src="model_img/geolocate_screenshot.png>
+[![Product Name Screen Shot][product-screenshot4]](https://example.com)
+
 
 * Nearest AEDs location panel displays
-<img src="model_img/location_screenshot.png>
+[![Product Name Screen Shot][product-screenshot5]](https://example.com)
 
 * Select a location 
-<img src="model_img/aed_location_screenshot.png>
+[![Product Name Screen Shot][product-screenshot6]](https://example.com)
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -216,6 +220,17 @@ Project Link: [https://github.com/tp-27/AEDMe](https://github.com/tp-27/AEDMe)
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/phanthomas/
 [product-screenshot]: model_img/homepage.png
+
+[product-screenshot2]: model_img/select_screenshot.png
+[product-screenshot3]: model_img/button_screenshot.png
+[product-screenshot4]: model_img/geolocate_screenshot.png
+[product-screenshot5]: model_img/location_screenshot.png
+[product-screenshot6]: model_img/aed_location_screenshot.png
+
+
+
+
+
 [JavaScript.com]:https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
 [Python.com]:https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
 [CSS3.com]:https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white
