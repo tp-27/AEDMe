@@ -114,9 +114,23 @@ This application displays to the user all of the nearest AEDs found on a selecte
 
 
 <!-- USAGE EXAMPLES -->
-<!-- ## Usage
+## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources. -->
+* Select a university campus
+<img src="./model_img/select_screenshot.png>
+
+* Click locate button
+<img src="./model_img/button_screenshot.png>
+
+* Toggle geolocate button
+<img src="./model_img/geolocate_screenshot.png>
+
+* Nearest AEDs location panel displays
+<img src="./model_img/location_screenshot.png>
+
+* Select a location 
+<img src="./model_img/aed_location_screenshot.png>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
