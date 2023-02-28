@@ -117,21 +117,26 @@ This application displays to the user all of the nearest AEDs found on a selecte
 ## Usage
 
 1. **Select a university campus**
+<br />
 [![Product Name Screen Shot][product-screenshot2]](https://example.com)
 
 
 2. **Click locate button**
+<br />
 [![Product Name Screen Shot][product-screenshot3]](https://example.com)
 
 
 3. **Select geolocate button**
+<br />
 [![Product Name Screen Shot][product-screenshot4]](https://example.com)
 
 
 4. **Nearest AEDs location panel displays**
+<br />
 [![Product Name Screen Shot][product-screenshot5]](https://example.com)
 
 5. **Select a location to get directions**
+<br />
 [![Product Name Screen Shot][product-screenshot6]](https://example.com)
 
 
