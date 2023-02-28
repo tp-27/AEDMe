@@ -95,11 +95,11 @@ This application displays to the user all of the nearest AEDs found on a selecte
 
 ### Built With
 
-*[![JavaScript][JavaScript.com]][Javascript-url]
-*[![Python][Python.com]][Python-url]
-*[![CSS3][CSS3.com]][CSS3-url]
-*[![HTML5][HTML5.com]][HTML5-url]
-*[![Google][Google.com]][Google-url]
+*[![JavaScript][JavaScript.com]]
+*[![Python][Python.com]]
+*[![CSS3][CSS3.com]]
+*[![HTML5][HTML5.com]]
+*[![Google][Google.com]]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
