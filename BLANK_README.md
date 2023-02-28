@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/tp-27/AEDMe">
-    <img src="model_img/aed-me.png" alt="Logo" width="80" height="80">
+    <img src="model_img/default.svg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">AEDMe</h3>
@@ -85,9 +85,9 @@
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 
-This application displays to the user all of the nearest AEDs found on a selected campus based on the users' current location. The project currently serves 7 different universities and plans to reach many other univerisites in Ontario. 
+This application displays to the user all of the nearest AEDs found on a selected campus based on the users' current location. The project currently serves 7 different universities and plans to reach many other univerisites in Ontario. This application is not affiliated with any of the listed universities. This application is meant to serve informational and educational purposes. 
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+<!-- Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description` -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -170,7 +170,7 @@ Distributed under the MIT License.
 <!-- CONTACT -->
 ## Contact
 
-Thomas Phan - [@email] thomas_phan27@outlook.com
+Thomas Phan - thomas_phan27@outlook.com
 
 Project Link: [https://github.com/tp-27/AEDMe](https://github.com/tp-27/AEDMe)
 
@@ -202,11 +202,11 @@ Project Link: [https://github.com/tp-27/AEDMe](https://github.com/tp-27/AEDMe)
 [license-shield]: https://img.shields.io/github/license/tp-27/AEDMe.svg?style=for-the-badge
 [license-url]: https://github.com/tp-27/AEDMe/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://www.linkedin.com/in/phanthomas/
 [product-screenshot]: model_img/homepage.png
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![Google](https://img.shields.io/badge/google-4285F4?style=for-the-badge&logo=google&logoColor=white)
+[JavaScript]:(https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+[Python]:(https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+[CSS3]:(https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+[HTML5]:(https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+[Google]:(https://img.shields.io/badge/google-4285F4?style=for-the-badge&logo=google&logoColor=white)
 
