@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/tp-27/AEDMe">
-    <img src="model_img/default.svg" alt="Logo" width="80" height="80">
+    <img src="model_img/aed.svg" alt="Logo" width="100" height="100">
   </a>
 
 <h3 align="center">AEDMe</h3>
@@ -106,17 +106,17 @@ This application displays to the user all of the nearest AEDs found on a selecte
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+<!-- ## Getting Started -->
 
 
-### Prerequisites
+<!-- ### Prerequisites -->
 
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+<!-- ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources. -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
