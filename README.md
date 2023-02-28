@@ -116,22 +116,22 @@ This application displays to the user all of the nearest AEDs found on a selecte
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-* Select a university campus
+1. **Select a university campus**
 [![Product Name Screen Shot][product-screenshot2]](https://example.com)
 
 
-* Click locate button
+2. **Click locate button**
 [![Product Name Screen Shot][product-screenshot3]](https://example.com)
 
 
-* Toggle geolocate button
+3. **Select geolocate button**
 [![Product Name Screen Shot][product-screenshot4]](https://example.com)
 
 
-* Nearest AEDs location panel displays
+4. **Nearest AEDs location panel displays**
 [![Product Name Screen Shot][product-screenshot5]](https://example.com)
 
-* Select a location 
+5. **Select a location to get directions**
 [![Product Name Screen Shot][product-screenshot6]](https://example.com)
 
 
