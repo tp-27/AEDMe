@@ -126,7 +126,7 @@ This application displays to the user all of the nearest AEDs found on a selecte
 [![Product Name Screen Shot][product-screenshot3]](https://example.com)
 
 
-3. **Select geolocate button**
+3. **Select geolocate option (switch)**
 
 [![Product Name Screen Shot][product-screenshot4]](https://example.com)
 
@@ -229,8 +229,8 @@ Project Link: [https://github.com/tp-27/AEDMe](https://github.com/tp-27/AEDMe)
 [product-screenshot2]: model_img/select_screenshot.png
 [product-screenshot3]: model_img/button_screenshot.png
 [product-screenshot4]: model_img/geolocate_screenshot.png
-[product-screenshot5]: model_img/location_screenshot.png
-[product-screenshot6]: model_img/aed_location_screenshot.png
+[product-screenshot5]: model_img/aed_location_screenshot.png
+[product-screenshot6]: model_img/direction_screenshot.png
 
 
 
