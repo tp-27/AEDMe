@@ -149,7 +149,7 @@ This application displays to the user all of the nearest AEDs found on a selecte
 - [x] Integrate Google Maps API 
 - [x] Scrape AED location information from webbrowser and PDF
 - [x] Reformat data into JSON 
-- [x] Implement Haversine Algorithm to find nearest location between to points 
+- [x] Implement Haversine Algorithm to find nearest location between two points on sphere 
 - [x] Implement HTML5 Geolocation
 - [x] Implement geolocation toggle switch
 - [x] Implement "university select" drop-down menu
