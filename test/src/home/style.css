@@ -11,11 +11,18 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.aed-icon {
+    padding-top: 50px;
+    margin-bottom: -50px;
+    height: 200px;
+    width: auto;
+}
+
 .select-menu{
     width: 400px;
-    height: 100px;
+    height: 400px;
     /* margin: 150px auto; */
-    padding-bottom: 50px;
+    /* padding-bottom: 50px; */
     z-index: 3;
 }
 
@@ -58,6 +65,8 @@
     background: white;
     box-shadow: 0 0 3px rgba(0,0,0,0.1);
     display: none;
+    height: 350px;
+    overflow-y: scroll;
 }
 
 .select-menu.active .options{
@@ -84,16 +93,28 @@
 }
 
 .navigation {
-    height: 50px;
+    height: 100px;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #8a1515;
+    justify-content: flex-end;
+    align-items: center; 
+    gap: 35px;
+    background-color: #e5e8ed;
+    padding-left: 90px;
+    padding-right: 80px;
+    /* border-bottom: #a8aaba solid; */
 }
 
+
 .nav-item {
-    color: white;
-    font-size: 14px;
+    color:  black;
+    font-size: 20px;
+}
+
+.other-pages{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
 }
 
 body {
@@ -263,7 +284,7 @@ a:visited {
     padding-top: 50px;
 }
 
-
+/**** aed-clickable ****/
 input[type="checkbox"] {
     -webkit-appearence:none;
     appearance: none;

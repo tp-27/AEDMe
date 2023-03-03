@@ -3,12 +3,18 @@
 import requests
 import json
 import time
+import sys
+
+
 
 # geocoder class
 class Geocode:
     base_url =  'https://nominatim.openstreetmap.org/search'
     valid_results = []
     invalid_results = []
+
+    def __init__(self, university):
+        self.university = university
 
     def fetch(self, address):
         headers = { #might need to change when hosting on server?
@@ -54,31 +60,40 @@ class Geocode:
 
     def store_results(self):
         #store valid results
-        with open('guelph_latlng.json', 'w') as f:
+        latLng_file = "./" + university + "/" + university + "_latlng.json"
+        with open(latLng_file, 'w') as f:
             f.write(json.dumps(self.valid_results, indent=2))
 
         #store invalid results
-        with open('guelph_invalid.json', 'w') as f:
+        invalid_file = "./" + university + "/" + university + "_invalid.json"
+        with open(invalid_file, 'w') as f:
             f.write(json.dumps(self.invalid_results, indent=2))
 
 
     def run(self):  
         #fetch addresses from file
-        with open('guelph_info.json', 'r') as f:
-            data = json.load(f)
-            
-            for row in data:
-                address = row['building']
-                response = self.fetch(address).json()
-                self.parse(response, row)
-                time.sleep(2) #respect policy nominatim (max 1 request/second)
+        info_file = "./" + university + "/" + university + "_info.json"
+        print(info_file)
+        try:
+            with open(info_file, 'r') as f:
+                data = json.load(f)
+                
+                for row in data:
+                    address = row['building']
+                    response = self.fetch(address).json()
+                    self.parse(response, row)
+                    time.sleep(2) #respect policy nominatim (max 1 request/second)
 
-        f.close()
-        self.store_results()
+            f.close()
+            self.store_results()
+        except:
+            sys.exit("Invalid file name.")
+
 
 # main driver
 if __name__ == '__main__':
-    geocoder = Geocode()
+    university = str(sys.argv[1])
+    geocoder = Geocode(university)
     geocoder.run()
 
 

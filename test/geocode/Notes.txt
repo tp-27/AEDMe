@@ -61,3 +61,16 @@ Flow of map.html
 - events:
     - location toggle 
     - find nearest AEDs 
+
+
+
+AED Location Details:
+Ottawa AED Location
+- where in Rideau Res
+- add in safety vehicles?
+
+Brock
+- confirm PDF that white spaces are places with no AED and not an AED location without location description
+
+
+- parser: for webscarped data make a parent class for parsing and each parser inherits and overrides

@@ -22,15 +22,19 @@ options.forEach(option => {
         optionMenu.classList.remove("active");
         selectedCampus = selectedOption.id;
         console.log(selectedCampus);
+
+        // go to map 
+        const url = `./map.html?campus=${selectedCampus}`;
+        window.location.href = url;
     });
 });
 
-checkbox.addEventListener('change', function() {
-    if(this.checked) {
-        const url = `./map.html?campus=${selectedCampus}`;
-        window.location.href = url;
-    }
-});
+// checkbox.addEventListener('change', function() {
+//     if(this.checked) {
+//         const url = `./map.html?campus=${selectedCampus}`;
+//         window.location.href = url;
+//     }
+// });
 
 
 // selected.addEventListener("click", () => {
