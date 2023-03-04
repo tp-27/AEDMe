@@ -1,6 +1,7 @@
 let map;
 let directionsService;
 let directionsDisplay;
+let infowindow;
 let allLocations = [];
 let markers = []; // markers = [ {marker, location, building} ]
 const campusCoord = {};
@@ -10,7 +11,8 @@ let campus;
 // initialize map display
 function initMap() {
     const queryParams = new URLSearchParams(window.location.search);    // get query string for campus selected
-    const checkbox = document.getElementById("switcher");
+    const geolocate_switch = document.getElementById("switcher");
+    const checkbox = document.getElementById("checkbox");
 
     campusCoord["guelph"] = [43.5322 , -80.2267];
     campusCoord["waterloo"] = [43.4723, -80.5449];
@@ -40,21 +42,22 @@ function initMap() {
     });
 
     currPosLatLng = new google.maps.LatLng(latitude, longitude);
-    setCurrMarker(currPosLatLng);
+    // setCurrMarker(currPosLatLng);
     getAEDInfo(campus, currPosLatLng);    // retrieve AED information
 
     // geolocate button
-    checkbox.addEventListener('change', function() {
+    geolocate_switch.addEventListener('change', function() {
         if(this.checked) {
             setTimeout(geolocate(), 450); // this delay allows for the toggler switch animation to play out 
         } else {
             currPosLatLng = new google.maps.LatLng(latitude, longitude);
             map.setCenter(currPosLatLng);
+            findNearestAED(currPosLatLng);
         }
     });
 
     function geolocate() {
-        let currLatLng = {};
+        let currLatLng;
         let pos;
 
         // check for geolocation
@@ -68,6 +71,7 @@ function initMap() {
                     
                     console.log(pos['lat']);
                     currLatLng = new google.maps.LatLng(pos['lat'], pos['lng']); 
+                    console.log(currLatLng);
                     currPosLatLng = setCurrMarker(currLatLng);
                     getAEDInfo(campus, currPosLatLng);    // retrieve AED information
                 }
@@ -80,6 +84,7 @@ function initMap() {
             };
 
             currLatLng = new google.maps.LatLng(pos['lat'], pos['lng']); 
+            console.log(currLatLng);
             currPosLatLng = setCurrMarker(currLatLng);
             getAEDInfo(campus, currPosLatLng);    // retrieve AED information
         }
@@ -123,10 +128,11 @@ function getAEDInfo(campus, currPosMarker) {
         return objectLen;
     })
     .then(function(numLocations) {
+        infowindow = new google.maps.InfoWindow();
         createMarkers(numLocations);
     })
     .then(function() {
-        checkbox.addEventListener('change', function() {
+        document.getElementById('checkbox').addEventListener('change', function() {
             if(this.checked) {
                 let nearestAEDS = [];
     
@@ -143,33 +149,12 @@ function getAEDInfo(campus, currPosMarker) {
                     justify-content: space-evenly;
                     align-items: center;
                     background-color: white;
+                    overflow-y: scroll; 
                 `
                 createPanel(locationPanel, nearestAEDS, currPosMarker); 
             }
         });
     })
-
-
-    //     document.getElementById('find_aed').addEventListener("click", function() {
-    //         let nearestAEDS = [];
-    
-    //         // find nearest AEDS
-    //         // currMarker = setCurrMarker(currLocation);
-    //         nearestAEDS = findNearestAED(currPosMarker); // nearestAEDS = [{marker, distance, latLng}], marker = {building, location}
-
-    //         // remove find_aed button 
-    //         document.getElementById('find_aed').remove();
-            
-    //         // display locations 
-    //         let locationPanel = document.getElementById("locations");
-    //         locationPanel.style.cssText = `
-    //             justify-content: space-evenly;
-    //             align-items: center;
-    //             background-color: white;
-    //         `
-    //         createPanel(locationPanel, nearestAEDS, currPosMarker); 
-    //     })
-    // });
 }
 
 // create and add all markers to map
@@ -189,6 +174,18 @@ function createMarkers(numLocations) {
             map: map,
             animation: google.maps.Animation.DROP, // Possibly add delay between drops?
         });
+        
+        const contentStr = 
+            '<h3>' + theBuilding + '</h3>' +
+            '<p>' + theLocation + '</p>';
+
+        marker.addListener("click", () => {
+            infowindow.setContent(contentStr);
+            infowindow.open({
+                anchor: marker,
+                map,
+            });
+        });
 
         theMarker.push(marker, theLocation, theBuilding);
         console.log(theMarker);
@@ -201,20 +198,19 @@ function createPanel(panel, nearestAEDS, currMarker) {
     // add locations to panel - maybe (add whole list with scroll?)
     console.log(nearestAEDS.length);
     for (let i = 0; i < nearestAEDS.length; i++) {
-        let newDiv = document.createElement("div");
         let infoDiv = document.createElement("div");
         let buildingDiv = document.createElement("div");
         let locationDiv = document.createElement("div");
+        let newDiv = document.createElement("div");
 
         newDiv.style.cssText = `
-            overflow-y: scroll;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 125px;
             width: 100%;
         `
-
+      
         infoDiv.style.cssText = `
             display: flex;
             justify-content: center;
@@ -299,9 +295,9 @@ function createPanel(panel, nearestAEDS, currMarker) {
                 }
             })
         });
+
         panel.appendChild(newDiv);
     }
-
 }
 
 // compute distances from markers
