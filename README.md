@@ -131,14 +131,6 @@ This application displays to the user all of the nearest AEDs found on a selecte
 [![Product Name Screen Shot][product-screenshot4]](https://example.com)
 
 
-4. **Nearest AEDs location panel displays**
-
-[![Product Name Screen Shot][product-screenshot5]](https://example.com)
-
-5. **Select a location to get directions**
-
-[![Product Name Screen Shot][product-screenshot6]](https://example.com)
-
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -225,13 +217,12 @@ Project Link: [https://github.com/tp-27/AEDMe](https://github.com/tp-27/AEDMe)
 [license-url]: https://github.com/tp-27/AEDMe/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/phanthomas/
-[product-screenshot]: model_img/homepage.png
+[product-screenshot]: model_img/1.png
 
-[product-screenshot2]: model_img/select_screenshot.png
-[product-screenshot3]: model_img/button_screenshot.png
-[product-screenshot4]: model_img/geolocate_screenshot.png
-[product-screenshot5]: model_img/aed_location_screenshot.png
-[product-screenshot6]: model_img/direction_screenshot.png
+[product-screenshot2]: model_img/2.png
+[product-screenshot3]: model_img/3.png
+[product-screenshot4]: model_img/4.png
+
 
 
 
