@@ -116,17 +116,17 @@ This application displays to the user all of the nearest AEDs found on a selecte
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1. **Select a university campus**
+<!-- 1. **Select a university campus** -->
 
 [![Product Name Screen Shot][product-screenshot2]](https://example.com)
 
 
-2. **Click locate button**
+<!-- 2. **Click locate button** -->
 
 [![Product Name Screen Shot][product-screenshot3]](https://example.com)
 
 
-3. **Select geolocate option (switch)**
+<!-- 3. **Select geolocate option (switch)** -->
 
 [![Product Name Screen Shot][product-screenshot4]](https://example.com)
 
@@ -219,7 +219,7 @@ Project Link: [https://github.com/tp-27/AEDMe](https://github.com/tp-27/AEDMe)
 [linkedin-url]: https://www.linkedin.com/in/phanthomas/
 [product-screenshot]: model_img/1.png
 
-[product-screenshot2]: model_img/2.png
+[product-screenshot2]: model_img/5.png
 [product-screenshot3]: model_img/3.png
 [product-screenshot4]: model_img/4.png
 
