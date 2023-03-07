@@ -116,20 +116,20 @@ This application displays to the user all of the nearest AEDs found on a selecte
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-[![Product Name Screen Shot][product-screenshot5]](https://example.com)
+[![Product Name Screen Shot][product-screenshot5]]
 <!-- 1. **Select a university campus** -->
 
-[![Product Name Screen Shot][product-screenshot2]](https://example.com)
+[![Product Name Screen Shot][product-screenshot2]]
 
 
 <!-- 2. **Click locate button** -->
 
-[![Product Name Screen Shot][product-screenshot3]](https://example.com)
+[![Product Name Screen Shot][product-screenshot3]]
 
 
 <!-- 3. **Select geolocate option (switch)** -->
 
-[![Product Name Screen Shot][product-screenshot4]](https://example.com)
+[![Product Name Screen Shot][product-screenshot4]]
 
 
 
@@ -156,7 +156,7 @@ See the [open issues](https://github.com/tp-27/AEDMe/issues) for a full list of 
 
 
 <!-- CONTRIBUTING -->
-## Contributing
+<!-- ## Contributing
 
 If you have any suggestions for improving this application it would greatly appreciated if you would like to **contribute**. 
 
@@ -166,7 +166,7 @@ Please fork the repo and create a pull request. You can also simply open an issu
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+5. Open a Pull Request -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
