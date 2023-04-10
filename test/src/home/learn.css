@@ -12,6 +12,7 @@ body {
     background-color: #e5e8ed;
     padding: 0;
     margin: 0;
+    font-family: "Avenir Next",sans-serif;
 }
 
 strong {
@@ -19,11 +20,37 @@ strong {
 }
 
 ol {
+    list-style: none;
+    counter-reset: item;
     padding-left: 40px;
+}
+
+li {
+    counter-increment: item;
+    margin-bottom: 5px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+li:before {
+    margin-right: 10px;
+    content: counter(item);
+    background: rgba(188, 8, 8, 0.745);
+    border-radius: 100%;
+    color: white;
+    width: 1.5em;
+    text-align: center;
+    display: inline-block;
 }
 
 a {
     text-decoration: none;
+}
+
+
+span {
+    padding: 5px;
+    color: white;
 }
 
 .SCA-fact {
@@ -37,7 +64,7 @@ a {
 #SCA {
     /* display: inline-block; */
     padding: 20px;
-    color: red;
+    color: rgba(188, 8, 8, 0.745);
     font-weight: bold;
     font-size: 30px;
 }
@@ -103,11 +130,6 @@ a {
     font-weight: 600;
 }
 
-span {
-    padding: 5px;
-    color: white;
-}
-
 .typed-cursor {
     font-size: 45px;
 }
@@ -168,8 +190,9 @@ span {
     margin-bottom: -25px;
     height: 170px;
     width: 170px;
-    border: rgb(190, 187, 187) 1px solid;
+    /* border: rgb(190, 187, 187) 1px solid; */
     border-radius: 50%;
+    padding-top: 25px;
     align-self: flex-start;
 }
 
@@ -179,7 +202,7 @@ span {
     justify-content: center;
     height: 170px;
     width: 170px;
-    border: rgb(190, 187, 187) 1px solid;
+    /* border: rgb(190, 187, 187) 1px solid; */
     border-radius: 50%;
     align-self: flex-end;
 
@@ -191,7 +214,7 @@ span {
     justify-content: center;
     height: 170px;
     width: 170px;
-    border: rgb(190, 187, 187) 1px solid;
+    /* border: rgb(190, 187, 187) 1px solid; */
     border-radius: 50%;
     align-self: flex-start;
 }
@@ -202,6 +225,31 @@ span {
     border-bottom: 1px rgb(190, 187, 187) solid;
 }
 
+.steps {
+    padding-top: 30px;
+}
+
+.aed-diagram {
+    padding: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.how-video {
+    display: flex;
+    flex-direction: column;
+    /* gap: 40px; */
+    padding-top: 50px;
+}
+
+.how-video-text {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.how-video-video {
+    align-self: center;
+}
 
 h1 {
     font-size: 35px;

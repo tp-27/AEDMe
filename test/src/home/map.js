@@ -4,15 +4,14 @@ let directionsDisplay;
 let infowindow;
 let allLocations = [];
 let markers = []; // markers = [ {marker, location, building} ]
-const campusCoord = {};
 let campus;
+const campusCoord = {};
 
 
 // initialize map display
 function initMap() {
     const queryParams = new URLSearchParams(window.location.search);    // get query string for campus selected
     const geolocate_switch = document.getElementById("switcher");
-    const checkbox = document.getElementById("checkbox");
 
     campusCoord["guelph"] = [43.5322 , -80.2267];
     campusCoord["waterloo"] = [43.4723, -80.5449];
@@ -28,7 +27,6 @@ function initMap() {
         campus = "guelph"; //default map
     } 
 
-
     // get map coordinates
     let coords = campusCoord[campus];
     let latitude = coords[0];
@@ -42,7 +40,7 @@ function initMap() {
     });
 
     currPosLatLng = new google.maps.LatLng(latitude, longitude);
-    // setCurrMarker(currPosLatLng);
+    setCurrMarker(currPosLatLng);
     getAEDInfo(campus, currPosLatLng);    // retrieve AED information
 
     // geolocate button
@@ -53,9 +51,12 @@ function initMap() {
             currPosLatLng = new google.maps.LatLng(latitude, longitude);
             map.setCenter(currPosLatLng);
             findNearestAED(currPosLatLng);
+            getAEDInfo();
         }
     });
 
+    // FIX ME - MIGHT NEED TO BREAK DOWN getAEDInfo into functions 
+    
     function geolocate() {
         let currLatLng;
         let pos;
@@ -73,7 +74,7 @@ function initMap() {
                     currLatLng = new google.maps.LatLng(pos['lat'], pos['lng']); 
                     console.log(currLatLng);
                     currPosLatLng = setCurrMarker(currLatLng);
-                    getAEDInfo(campus, currPosLatLng);    // retrieve AED information
+                    getAEDInfo(campus, currLatLng);    // retrieve AED information
                 }
             )
         } else {
@@ -98,18 +99,19 @@ function initMap() {
 
 // retrieve AED info from corresponding json, add markers to map, add location panel
 function getAEDInfo(campus, currPosMarker) {
-    const fileNames = {
-        "guelph": "../info_json/guelph/guelph_latlng.json",
-        "waterloo": "../info_json/waterloo/waterloo_latlng.json",
-        "carleton": "../info_json/carleton/carleton_latlng.json",
-        "ottawa": "../info_json/ottawa/ottawa_latlng.json",
-        "toronto": "../info_json/toronto/toronto_latlng.json",
-        "mcmaster": "../info_json/mcmaster/mcmaster_latlng.json",
-        "manitoba": "../info_json/manitoba/manitoba_latlng.json",
-        "brock": "../info_json/brock/brock_latlng.json"
-    }
+    // const fileNames = {
+    //     "guelph": "../info_json/guelph/guelph_latlng.json",
+    //     "waterloo": "../info_json/waterloo/waterloo_latlng.json",
+    //     "carleton": "../info_json/carleton/carleton_latlng.json",
+    //     "ottawa": "../info_json/ottawa/ottawa_latlng.json",
+    //     "toronto": "../info_json/toronto/toronto_latlng.json",
+    //     "mcmaster": "../info_json/mcmaster/mcmaster_latlng.json",
+    //     "manitoba": "../info_json/manitoba/manitoba_latlng.json",
+    //     "brock": "../info_json/brock/brock_latlng.json"
+    // }
 
-    file = fileNames[campus];
+    file = "guelph_latlng.json"
+    // file = fileNames[campus];
     fetch(file) 
     .then(function(response) {return response.json();})
     .then(function(results) {
@@ -132,31 +134,49 @@ function getAEDInfo(campus, currPosMarker) {
         createMarkers(numLocations);
     })
     .then(function() {
-        document.getElementById('checkbox').addEventListener('change', function() {
-            if(this.checked) {
+        const button = document.getElementById("find-me");
+        if (button) {
+            button.addEventListener("click", function() {
                 let nearestAEDS = [];
     
                 // find nearest AEDS
                 nearestAEDS = findNearestAED(currPosMarker); // nearestAEDS = [{marker, distance, latLng}], marker = {building, location}
-
+    
                 // remove find_aed button 
-                document.getElementById('checkbox').remove();
-                document.getElementById('aed-label').remove();
+                document.getElementById('find-me').remove();
                 
                 // display locations 
                 let locationPanel = document.getElementById("locations");
                 locationPanel.style.cssText = `
+                    background-color: white;
+                    display: flex;
+                    flex-direction: column;
                     justify-content: space-evenly;
                     align-items: center;
-                    background-color: white;
-                    overflow-y: scroll; 
+                    overflow: auto;
                 `
                 createPanel(locationPanel, nearestAEDS, currPosMarker); 
-            }
-        });
+            });
+        } else {
+            let nearestAEDS = [];
+            nearestAEDS = findNearestAED(currPosMarker); // nearestAEDS = [{marker, distance, latLng}], marker = {building, location}
+            
+            // display locations 
+            let locationPanel = document.getElementById("locations");
+            locationPanel.style.cssText = `
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 100px;
+                border: 2px red solid;
+                align-items: center;
+                background-color: white;
+            `
+            // overflow-y: scroll; 
+            createPanel(locationPanel, nearestAEDS, currPosMarker); 
+        }
     })
 }
-
 // create and add all markers to map
 function createMarkers(numLocations) {
     // Add all markers to map
@@ -188,7 +208,6 @@ function createMarkers(numLocations) {
         });
 
         theMarker.push(marker, theLocation, theBuilding);
-        console.log(theMarker);
         markers.push(theMarker); 
     }
 }
@@ -209,6 +228,7 @@ function createPanel(panel, nearestAEDS, currMarker) {
             align-items: center;
             height: 125px;
             width: 100%;
+            border: 2px solid red;
         `
       
         infoDiv.style.cssText = `
@@ -239,6 +259,7 @@ function createPanel(panel, nearestAEDS, currMarker) {
         
         iconDiv.style.cssText = `
             display: flex;
+            height: 50px;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -253,7 +274,6 @@ function createPanel(panel, nearestAEDS, currMarker) {
         distDiv.innerHTML = parseFloat(nearestAEDS[i][1]).toFixed(2) + "km"; // truncate dist to 2 decimal places
         iconDiv.append(icon);
         iconDiv.append(distDiv);
-        newDiv.appendChild(iconDiv);
         
         // add content to div + event listener
         // nearestAEDS = [{marker, distance, latLng}], marker = {building, location}
@@ -272,7 +292,8 @@ function createPanel(panel, nearestAEDS, currMarker) {
             newDiv.style.fontWeight = "";
         });
 
-    
+        
+        newDiv.appendChild(iconDiv);
         newDiv.appendChild(infoDiv);
 
         infoDiv.addEventListener("click", (e) => {
@@ -389,6 +410,4 @@ function setCurrMarker(currLocation) {
     map.setCenter(currLocation);
     return currMarker;
 }
-
-
 

@@ -2,9 +2,58 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Register your school</title>
+        <title>Register School</title>
+        <link rel="stylesheet" href="./register.css">
     </head>
     <body>
-       <h1>Register here</h1>
+        <div class="navigation">
+            <div class="aed-home-page">
+                <a href="home_page.html">
+                    <img src="images/aed.svg"  class="aed-icon" alt="AED icon">
+                    <div class="aed-home-text">AEDMe</div>
+                </a>
+            </div>
+            <div class="other-pages">
+                <a href="learn-more.html"><div class="nav-item">Learn More</div></a>
+                <a href="register.html"><div class="nav-item">Register Your School</div></a>
+                <a href="contact.html"><div class="nav-item">Contact</div></a>
+            </div>
+           
+        </div>
+        
+        <!-- https://www.youtube.com/watch?v=r4RQ38EoLds&ab_channel=CodewithAniaKub%C3%B3w
+            ** FINISH FORM WHEN WEBSITE IS DEPLOYED **
+        -->
+        <div class="contact-info">
+            <h1>Don't see your school? Suggest it to be added!</h1>
+            <div class="form">
+                <form class="register" action="https://formsubmit.co/thomas_phan27@outlook.com" method="POST">
+                    <div class="first-name">
+                        <label for="name">Your first name:</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="email">
+                        <label for="email">Your email: </label>
+                        <input type="email" name="email" placeholder="Email Address">
+                    </div>
+                    <div class="school-name">
+                        <label for="school-name">School name:</label>
+                        <input type="text" name="school-name" required>
+                    </div>
+                    <input type="hidden" name="_next" value="https://yourdomain.co/thankyou.html">
+                    <button type="submit">Send</button>
+               </form>
+            </div>
+        </div>
     </body>
 </html>
+
+
+<!-- Have the letters Automated Ext. Defib. show up as animation with each letter showing up
+
+https://www.heartandstroke.ca/how-you-can-help/learn-cpr/aeds
+https://www.heartandstroke.ca/how-you-can-help/advocate/restart-a-heart
+(3) https://www.heartandstroke.ca/-/media/pdf-files/canada/other/pad-eng-final.ashx 
+(4) https://www.ontario.ca/laws/statute/07c10
+
+-->

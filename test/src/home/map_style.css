@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* font-family: "Avenir Next",sans-serif; */
     font-family: 'Poppins', sans-serif;
 }
 
@@ -12,6 +13,10 @@ body {
     background-color: #e5e8ed;
     padding: 0;
     margin: 0;
+}
+
+a {
+    text-decoration: none;
 }
 
 /**** Nav bar ****/
@@ -62,11 +67,16 @@ body {
 /**** Geolocate toggler ****/
 .geo-locate-button {
     height: 150px;
-    /* border: solid red 2px; */
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 50px;
     margin-bottom: -100px;
+}
+
+.geo-locate-title {
+    font-size: 20px;
+    font-weight: 700;
 }
 
 .switch {
@@ -171,10 +181,36 @@ body {
 }
 
 #locations {
-    height: 100%;
+    height: 800px;
     width: 600px;
-    /* border: #bbbcc5 solid; */
-    /* overflow-x: scroll; */
+    /* background-color: white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    height: 900px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+    padding-left: 50px; 
+    padding-right: 50px;     
+}
+
+.find-me {
+    height: 100px;
+    width: 200px;
+}
+
+button {
+    height: 80px;
+    width: 250px;
+    font-size: 25px;
+    background-color: #8a1515;
+    color:#e5e8ed;
 }
 
 html,
@@ -184,30 +220,14 @@ body {
     padding: 0;
 }
 
-.container {
-    /* border: red 2px solid; */
-    height: 900px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* gap: 150px; */
-    padding-top: 100px;
-    padding-left: 50px; 
-    padding-right: 50px;     
-    /* box-shadow: 10px 10px;
-    color: black; */
-}
-
 /**** Location + Map panel END ****/
 
 /**** Aed-clickable ****/
 
+/*
 .aed-clickable {
     height: 80%;
     width: 500px;
-    /* border: red 2px solid; */
-    /* padding-right: 150px; */
 }
 
 
@@ -223,7 +243,7 @@ body {
     );
     position: absolute;
     margin: auto;
-    top: 0;  /* change this to orient button */
+    top: 0;  
     bottom: 70px;
     left: 350px;
     border-radius: 50%;
@@ -264,7 +284,7 @@ body {
 label[for="checkbox"] {
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 512px; /* change this to orient button */
+    top: 512px; 
     left: 410px;
 
 }
@@ -291,10 +311,3 @@ label[for="checkbox"] > .fa-solid:hover {
     color: #8a1515;
 }
 
-/* a {
-    display: inline-block;
-    position: relative;
-    z-index: 1;
-    padding: 5em;
-    margin: -2em;
-  } */
