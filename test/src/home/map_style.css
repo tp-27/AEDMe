@@ -183,7 +183,6 @@ a {
 #locations {
     height: 800px;
     width: 600px;
-    /* background-color: white; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -206,11 +205,19 @@ a {
 }
 
 button {
+    text-decoration: none;
+    border: none;
     height: 80px;
     width: 250px;
     font-size: 25px;
-    background-color: #8a1515;
-    color:#e5e8ed;
+    background-color:#b8a4a4;
+    border-radius: 20px;
+    color: black;
+}
+
+button:hover {
+    background-color: #750808;
+    color: white;
 }
 
 html,
@@ -221,93 +228,4 @@ body {
 }
 
 /**** Location + Map panel END ****/
-
-/**** Aed-clickable ****/
-
-/*
-.aed-clickable {
-    height: 80%;
-    width: 500px;
-}
-
-
-#checkbox {
-    -webkit-appearence:none;
-    appearance: none;
-    height: 120px;
-    width: 120px;
-    background: linear-gradient(
-        to top,
-        #fafafa,
-        #d0d3d8
-    );
-    position: absolute;
-    margin: auto;
-    top: 0;  
-    bottom: 70px;
-    left: 350px;
-    border-radius: 50%;
-    cursor: pointer;
-    outline: none;
-}
-
-#checkbox:before {
-    position: absolute;
-    content:"";
-    height: 180px;
-    width: 180px;
-    background: linear-gradient(
-        to bottom,
-        #fafafa,
-        #d0d3d8
-    );
-    border-radius: 50%;
-    z-index: -1;
-    bottom: -30px;
-    left: -30px;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-}
-
-#checkbox:after{
-    position: absolute;
-    content: "";
-    height: 210px;
-    width: 210px;
-    background: #d6dce3;
-    bottom: -45px;
-    left: -45px;
-    z-index: -2;
-    border-radius: 50%;
-    box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
-} 
-
-label[for="checkbox"] {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 512px; 
-    left: 410px;
-
-}
-
-
-label[for="checkbox"] > .fa-solid {
-    font-size: 50px;
-    color: #a8aaba;
-} 
-
-#checkbox:checked + label[for="checkbox"] > .fa-solid {
-    color: #8a1515;
-}
-
-#checkbox:checked:after {
-    background: linear-gradient(
-        -135deg,
-        #8a061ebd,
-        #8a1515
-    );
-}  
-
-label[for="checkbox"] > .fa-solid:hover {
-    color: #8a1515;
-}
 

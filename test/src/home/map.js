@@ -56,7 +56,6 @@ function initMap() {
     });
 
     // FIX ME - MIGHT NEED TO BREAK DOWN getAEDInfo into functions 
-    
     function geolocate() {
         let currLatLng;
         let pos;
@@ -99,19 +98,18 @@ function initMap() {
 
 // retrieve AED info from corresponding json, add markers to map, add location panel
 function getAEDInfo(campus, currPosMarker) {
-    // const fileNames = {
-    //     "guelph": "../info_json/guelph/guelph_latlng.json",
-    //     "waterloo": "../info_json/waterloo/waterloo_latlng.json",
-    //     "carleton": "../info_json/carleton/carleton_latlng.json",
-    //     "ottawa": "../info_json/ottawa/ottawa_latlng.json",
-    //     "toronto": "../info_json/toronto/toronto_latlng.json",
-    //     "mcmaster": "../info_json/mcmaster/mcmaster_latlng.json",
-    //     "manitoba": "../info_json/manitoba/manitoba_latlng.json",
-    //     "brock": "../info_json/brock/brock_latlng.json"
-    // }
+    const fileNames = {
+        "guelph": "../info_json/guelph/guelph_latlng.json",
+        "waterloo": "../info_json/waterloo/waterloo_latlng.json",
+        "carleton": "../info_json/carleton/carleton_latlng.json",
+        "ottawa": "../info_json/ottawa/ottawa_latlng.json",
+        "toronto": "../info_json/toronto/toronto_latlng.json",
+        "mcmaster": "../info_json/mcmaster/mcmaster_latlng.json",
+        "manitoba": "../info_json/manitoba/manitoba_latlng.json",
+        "brock": "../info_json/brock/brock_latlng.json"
+    }
 
-    file = "guelph_latlng.json"
-    // file = fileNames[campus];
+    file = fileNames[campus];
     fetch(file) 
     .then(function(response) {return response.json();})
     .then(function(results) {
@@ -154,6 +152,8 @@ function getAEDInfo(campus, currPosMarker) {
                     justify-content: space-evenly;
                     align-items: center;
                     overflow: auto;
+                    height: 800px;
+                    width: 600px;
                 `
                 createPanel(locationPanel, nearestAEDS, currPosMarker); 
             });
@@ -164,13 +164,14 @@ function getAEDInfo(campus, currPosMarker) {
             // display locations 
             let locationPanel = document.getElementById("locations");
             locationPanel.style.cssText = `
+                background-color: white;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
-                gap: 100px;
-                border: 2px red solid;
+                justify-content: space-evenly;
                 align-items: center;
-                background-color: white;
+                overflow: auto;
+                height: 800px;
+                width: 600px;
             `
             // overflow-y: scroll; 
             createPanel(locationPanel, nearestAEDS, currPosMarker); 
@@ -226,9 +227,8 @@ function createPanel(panel, nearestAEDS, currMarker) {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 125px;
             width: 100%;
-            border: 2px solid red;
+            padding: 30px;
         `
       
         infoDiv.style.cssText = `
@@ -236,19 +236,21 @@ function createPanel(panel, nearestAEDS, currMarker) {
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            gap: 15px;
+            font-size: 25px;
         `
 
         locationDiv.style.cssText = `
             height: 50%;
             width: 400px;
-            font-Size: 18px;
+            font-size: 19px;
             font-weight: 700;
         `
 
         buildingDiv.style.cssText = `
             height: 50%;
             width: 400px;
-            font-size: 15px; 
+            font-size: 17px; 
             color: light grey;
         `
 
