@@ -7,6 +7,7 @@ let markers = []; // markers = [ {marker, location, building} ]
 let campus;
 let currPosLatLng; 
 let currLatLng;
+let currPosMarker;
 const campusCoord = {};
 
 
@@ -41,25 +42,40 @@ function initMap() {
     });
 
     currPosLatLng = new google.maps.LatLng(latitude, longitude);
-    setCurrMarker(currPosLatLng);
+    currPosMarker = setCurrMarker(currPosLatLng);
     getAEDInfo(campus, currPosLatLng);    // retrieve AED information
 
     // current location button
     geolocate_switch.addEventListener('change', function() {
         if(this.checked) {
+            // reset map
             clear(document.getElementById("locations"));
-
+            // clearMarkers();
+            
+            // add loading icon
             let panel = document.getElementById("locations");
             let icon = makeLoadElement();
             panel.appendChild(icon);
+
+            // find geolocation
             setTimeout(geolocate(), 450); // this delay allows for the toggler switch animation to play out 
         } else {
+            // reset map (clear AED marker and curr location marker)
+            currPosMarker.setMap(null);
+
+            // clear AED locations panel
             clear(document.getElementById("locations"));
+            let locationPanel = document.getElementById("locations");
+
+            // find new locations
             currPosLatLng = new google.maps.LatLng(latitude, longitude);
-            map.setCenter(currPosLatLng);
-            findNearestAED(currPosLatLng);
-            getAEDInfo(campus, currPosLatLng);
+            currPosMarker = setCurrMarker(currPosLatLng);
+            let nearestAEDS = findNearestAED(currPosLatLng);
+            createPanel(locationPanel, nearestAEDS, currPosMarker); 
+            // getAEDInfo(campus, currPosLatLng);
         }
+
+        directionsDisplay.setMap(null);
     });
 
     // FIX ME - MIGHT NEED TO BREAK DOWN getAEDInfo into functions 
@@ -75,16 +91,17 @@ function initMap() {
                         lng: position.coords.longitude,
                     };
                     
-
-                    currLatLng = new google.maps.LatLng(pos['lat'], pos['lng']); 
-                    currPosLatLng = setCurrMarker(currLatLng); // remove curr marker
+                    currPosMarker.setMap(null); // remove current marker from map
+                    currPosLatLng = new google.maps.LatLng(pos['lat'], pos['lng']); 
+                    // map.setCenter(currPosLatLng);
+                    currPosMarker = setCurrMarker(currPosLatLng); // returns a new marker
                     
                     // ****** TEST *********
                         let nearestAEDS = [];
         
                         // find nearest AEDS
                         nearestAEDS = [];
-                        nearestAEDS = findNearestAED(currLatLng); // nearestAEDS = [{marker, distance, latLng}], marker = {building, location}
+                        nearestAEDS = findNearestAED(currPosLatLng); // nearestAEDS = [{marker, distance, latLng}], marker = {building, location}
             
                         // display locations 
                         let locationPanel = document.getElementById("locations");
@@ -127,6 +144,14 @@ function initMap() {
     directionsDisplay = new google.maps.DirectionsRenderer();
     directionsDisplay.setMap(map);
 }
+
+// function clearMarkers() {
+//     for (let i = 0 ; i < markers.length; i++) {
+//         markers[i][0].setMap(null);
+//     }
+
+//     markers[0] = 0;
+// }
 
 // creates a div element that contains a loading icon
 function makeLoadElement() {
@@ -357,10 +382,8 @@ function createPanel(panel, nearestAEDS, currMarker) {
             map.setZoom(16);
 
             // draw line from current location to aed selected
-            console.log(nearestAEDS[i]);
-            // let latLng = new google.maps.LatLng(currMarker.lat(), currMarker.lng()); // 
             directionsService.route({
-                origin: currLatLng, // FIX ME - CURRMARKER WILLL BE A MARKER_INFO OBJECT AS WELL
+                origin: currPosLatLng, // FIX ME - CURRMARKER WILLL BE A MARKER_INFO OBJECT AS WELL
                 destination: nearestAEDS[i][2],
                 travelMode: 'WALKING'
             }, function(response, status) {
