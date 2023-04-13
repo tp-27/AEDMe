@@ -234,4 +234,5 @@ Project Link: [https://github.com/tp-27/AEDMe](https://github.com/tp-27/AEDMe)
 [CSS3.com]:https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white
 [HTML5.com]:https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white
 [Google.com]:https://img.shields.io/badge/google-4285F4?style=for-the-badge&logo=google&logoColor=white
+[Flaticon.com]:https://www.flaticon.com/free-icons/defibrillator
 

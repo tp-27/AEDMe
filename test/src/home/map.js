@@ -47,48 +47,42 @@ function initMap() {
 
     // current location button
     geolocate_switch.addEventListener('change', function() {
+        directionsDisplay.setMap(null);
         if(this.checked) {
             // reset map
             clear(document.getElementById("locations"));
 
             let panel = document.getElementById("locations");
-            panel.style.justifyContent = 'center';
             let icon = makeLoadElement();
+
+            panel.style.justifyContent = 'center';
             panel.appendChild(icon);
     
-            // find geolocation
             setTimeout(geolocate(), 450); // this delay allows for the toggler switch animation to play out 
         } else {
-            // reset map (clear AED marker and curr location marker)
-            currPosMarker.setMap(null);
+            let nearestAEDS = [];
 
-            // clear AED locations panel
-            clear(document.getElementById("locations"));
+            currPosMarker.setMap(null); // reset map (clear AED marker and curr location marker)
+            clear(document.getElementById("locations")); // clear AED locations panel
 
-            // find new locations
-            currPosLatLng = new google.maps.LatLng(latitude, longitude);
+            currPosLatLng = new google.maps.LatLng(latitude, longitude); // find new locations
             currPosMarker = setCurrMarker(currPosLatLng);
-            let nearestAEDS = findNearestAED(currPosLatLng);
+            nearestAEDS = findNearestAED(currPosLatLng);
             createPanel(nearestAEDS, currPosMarker); 
-            // getAEDInfo(campus, currPosLatLng);
         }
 
-        directionsDisplay.setMap(null);
+        directionsDisplay.setMap(map);
     });
 
     function geolocate() {
         let pos;
 
-    
-        // ** TEST ** add loading icon
-            // let panel = document.getElementById("locations");
-            // let icon = makeLoadElement();
-            // panel.appendChild(icon);
-
         // check for geolocation
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
+                    let nearestAEDS = [];
+
                     pos = {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude,
@@ -96,42 +90,30 @@ function initMap() {
                     
                     currPosMarker.setMap(null); // remove current marker from map
                     currPosLatLng = new google.maps.LatLng(pos['lat'], pos['lng']); 
-                    // map.setCenter(currPosLatLng);
                     currPosMarker = setCurrMarker(currPosLatLng); // returns a new marker
-                    
-                    // ****** TEST *********
-                        let nearestAEDS = [];
-        
-                        // find nearest AEDS
-                        nearestAEDS = [];
-                        nearestAEDS = findNearestAED(currPosLatLng); // nearestAEDS = [{marker, distance, latLng}], marker = {building, location}
-
-                        // display locations 
-                        document.getElementById('locations').firstElementChild.remove();
-                        console.log(nearestAEDS);
                         
-                        createPanel(nearestAEDS, currLatLng); 
-
-                    // *************************
-                    // getAEDInfo(campus, currLatLng);    // retrieve AED information
-                    // alert(currLatLng);
+                    // find nearest AEDS
+                    nearestAEDS = [];
+                    nearestAEDS = findNearestAED(currPosLatLng); // nearestAEDS = [{marker, distance, latLng}], marker = {building, location}
+                    
+                    // display locations 
+                    document.getElementById('locations').firstElementChild.remove();                    
+                    createPanel(nearestAEDS, currLatLng); 
                 }
             )
         } else {
             alert("Browser does not support geolocation"); // use campus location
+            
             pos = {
                 lat: latitude,
                 lng: longitude
             };
 
             currLatLng = new google.maps.LatLng(pos['lat'], pos['lng']); 
-            console.log(currLatLng);
             currPosLatLng = setCurrMarker(currLatLng);
-            getAEDInfo(campus, currPosLatLng);    // retrieve AED information
+            nearestAEDS = findNearestAED(currPosLatLng);
+            createPanel(nearestAEDS, currLatLng); 
         }
-
-        // panel.removeChild(icon);
-
     }
 
     // add directions display to map
@@ -139,14 +121,6 @@ function initMap() {
     directionsDisplay = new google.maps.DirectionsRenderer();
     directionsDisplay.setMap(map);
 }
-
-// function clearMarkers() {
-//     for (let i = 0 ; i < markers.length; i++) {
-//         markers[i][0].setMap(null);
-//     }
-
-//     markers[0] = 0;
-// }
 
 // creates a div element that contains a loading icon
 function makeLoadElement() {
@@ -238,10 +212,18 @@ function createMarkers(numLocations) {
         let theLatLng = new google.maps.LatLng(lat, lng);
         let theMarker = []
 
+        const icon = {
+            url: "./images/heart.png", // url
+            scaledSize: new google.maps.Size(35, 35), // scaled size
+            origin: new google.maps.Point(0,0), // origin
+            anchor: new google.maps.Point(0, 0) // anchor
+        };
+
         let marker = new google.maps.Marker({
             position: theLatLng,
             map: map,
             animation: google.maps.Animation.DROP, // Possibly add delay between drops?
+            icon: icon
         });
         
         const contentStr = 
@@ -265,8 +247,6 @@ function createMarkers(numLocations) {
 function createPanel(nearestAEDS, currMarker) {
     let locationPanel = document.getElementById("locations");
     
-    // clear(locationPanel);
-
     locationPanel.style.justifyContent = "";
     locationPanel.style.alignItems = "";
     locationPanel.style.cssText = `
@@ -278,7 +258,6 @@ function createPanel(nearestAEDS, currMarker) {
                 overflow: auto;
             `
 
-    console.log("Creating panel with" + nearestAEDS.length + " AEDs");
     for (let i = 0; i < nearestAEDS.length; i++) {
         let infoDiv = document.createElement("div");
         let buildingDiv = document.createElement("div");
@@ -341,7 +320,6 @@ function createPanel(nearestAEDS, currMarker) {
         iconDiv.append(distDiv);
         
         // add content to div + event listener
-        // nearestAEDS = [{marker, distance, latLng}], marker = {building, location}
         locationDiv.innerHTML = nearestAEDS[i][0][1];
         buildingDiv.innerHTML = nearestAEDS[i][0][2]; 
 
@@ -380,20 +358,17 @@ function createPanel(nearestAEDS, currMarker) {
             })
         });
         
-        console.log("appending new div");
         locationPanel.appendChild(newDiv);
     }
 }
 
+
 // compute distances from markers
 function findNearestAED(currPosLatLng) {
     let allDistances = [];
-    let nearest = [];
     let distance;
-    let address;
     let latLng;
 
-    // console.log(currPosLatLng);
     // compute distances between each marker and location
     console.log("Markers: " + markers.length);
     for(let i = 0; i < markers.length; i++) {
@@ -405,39 +380,27 @@ function findNearestAED(currPosLatLng) {
         allDistances.push(mark_dist);
     }
 
-    // sort from smallest to largest - insertion sort
-    allDistances.sort(cmpfnc)
-    // allDistances.sort(function(a, b) { return a[1] - b[1] });
-
-    for(let i = 0; i < allDistances.length; i++) {
-        console.log(allDistances[i][1]);
-    }
-
+    allDistances.sort(cmpfnc); // sort from smallest to largest - insertion sort
     return allDistances; // I want to return the markers associated with the distance
 }
 
 function cmpfnc(a, b) {
-    // console.log("Comparing:" + a[1] + "and" + b[1]);
     return a[1] - b[1];
 }
 
 // haversine formula for calculating distance in KM between two points on surface of a sphere
 function haversine_distance(marker1, currLocation) {
-    // console.log(currLocation.lat());
-    // console.log(currLocation.lng());
-
     let R = 6371.0710; // Radius of the Earth in km
     let rlat1 = marker1.position.lat() * (Math.PI/180); // Convert degrees to radians
     let rlat2 = currLocation.lat() * (Math.PI/180); // Convert degrees to radians
     let difflat = rlat2-rlat1; // Radian difference (latitudes)
     let difflon = (currLocation.lng()-marker1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
-
     let d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+
     return d;
 }
 
 function findLocationInfo(marker) {
-    // create lat/lng string
     let lng = marker.getPosition().lat().toString(); // lat/lng from json file opposite of google maps
     let lat = marker.getPosition().lng().toString();
     let latlng = lat.concat(',  ' , lng); // Match json string format to compare
@@ -447,8 +410,6 @@ function findLocationInfo(marker) {
     // compare string to all locations and assign with correct address
     for (let i = 0; i < allLocations.length; i++) {
         if (latlng == allLocations[i][1]) {
-            console.log("comparing %s, to %s ", latlng, allLocations[i][1]);
-            console.log("match"); // What about duplicates?
             address = allLocations[i][0];
             return address;
 
@@ -469,12 +430,17 @@ function getLatLng(marker) {
 
 // create a marker for the current location
 function setCurrMarker(currLocation) {
+    const icon = {
+        url: "./images/bluemark.png", // url
+        scaledSize: new google.maps.Size(40, 40), // scaled size
+        origin: new google.maps.Point(0,0), // origin
+        anchor: new google.maps.Point(0, 0) // anchor
+    };
+
     let currMarker = new google.maps.Marker({
         map: map,
         position: currLocation,
-        icon: { // make marker different colour
-            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-        }
+        icon: icon
     });
 
     map.setCenter(currLocation);
