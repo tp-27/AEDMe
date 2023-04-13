@@ -50,13 +50,12 @@ function initMap() {
         if(this.checked) {
             // reset map
             clear(document.getElementById("locations"));
-            // clearMarkers();
-            
-            // add loading icon
+
             let panel = document.getElementById("locations");
+            panel.style.justifyContent = 'center';
             let icon = makeLoadElement();
             panel.appendChild(icon);
-
+    
             // find geolocation
             setTimeout(geolocate(), 450); // this delay allows for the toggler switch animation to play out 
         } else {
@@ -65,22 +64,26 @@ function initMap() {
 
             // clear AED locations panel
             clear(document.getElementById("locations"));
-            let locationPanel = document.getElementById("locations");
 
             // find new locations
             currPosLatLng = new google.maps.LatLng(latitude, longitude);
             currPosMarker = setCurrMarker(currPosLatLng);
             let nearestAEDS = findNearestAED(currPosLatLng);
-            createPanel(locationPanel, nearestAEDS, currPosMarker); 
+            createPanel(nearestAEDS, currPosMarker); 
             // getAEDInfo(campus, currPosLatLng);
         }
 
         directionsDisplay.setMap(null);
     });
 
-    // FIX ME - MIGHT NEED TO BREAK DOWN getAEDInfo into functions 
     function geolocate() {
         let pos;
+
+    
+        // ** TEST ** add loading icon
+            // let panel = document.getElementById("locations");
+            // let icon = makeLoadElement();
+            // panel.appendChild(icon);
 
         // check for geolocation
         if (navigator.geolocation) {
@@ -102,23 +105,12 @@ function initMap() {
                         // find nearest AEDS
                         nearestAEDS = [];
                         nearestAEDS = findNearestAED(currPosLatLng); // nearestAEDS = [{marker, distance, latLng}], marker = {building, location}
-            
+
                         // display locations 
-                        let locationPanel = document.getElementById("locations");
-                        locationPanel.style.cssText = `
-                            background-color: white;
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: space-evenly;
-                            align-items: center;
-                            overflow: auto;
-                            height: 800px;
-                            width: 600px;
-                        `
-
-
+                        document.getElementById('locations').firstElementChild.remove();
                         console.log(nearestAEDS);
-                        createPanel(locationPanel, nearestAEDS, currLatLng); 
+                        
+                        createPanel(nearestAEDS, currLatLng); 
 
                     // *************************
                     // getAEDInfo(campus, currLatLng);    // retrieve AED information
@@ -137,6 +129,9 @@ function initMap() {
             currPosLatLng = setCurrMarker(currLatLng);
             getAEDInfo(campus, currPosLatLng);    // retrieve AED information
         }
+
+        // panel.removeChild(icon);
+
     }
 
     // add directions display to map
@@ -213,37 +208,13 @@ function getAEDInfo(campus, currPosMarker) {
                 document.getElementById('find-me').remove();
                 
                 // display locations 
-                let locationPanel = document.getElementById("locations");
-                locationPanel.style.cssText = `
-                    background-color: white;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-evenly;
-                    align-items: center;
-                    overflow: auto;
-                    height: 800px;
-                    width: 600px;
-                `
-                createPanel(locationPanel, nearestAEDS, currPosMarker); 
+                createPanel(nearestAEDS, currPosMarker); 
             });
         } else {
             let nearestAEDS = [];
-            let locationPanel = document.getElementById("locations");
 
-            // locationPanel.clear();
-            clear(locationPanel);
-            locationPanel.style.cssText = `
-                background-color: white;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-evenly;
-                align-items: center;
-                overflow: auto;
-                height: 800px;
-                width: 600px;
-            `
             nearestAEDS = findNearestAED(currPosMarker); // nearestAEDS = [{marker, distance, latLng}], marker = {building, location}
-            createPanel(locationPanel, nearestAEDS, currPosMarker); 
+            createPanel(nearestAEDS, currPosMarker); 
         }
     })
 }
@@ -291,10 +262,23 @@ function createMarkers(numLocations) {
 }
 
 // create nearest aed locations panel next to map
-function createPanel(panel, nearestAEDS, currMarker) {
-    clear(panel);
-    // add locations to panel - maybe (add whole list with scroll?)
-    console.log(nearestAEDS.length);
+function createPanel(nearestAEDS, currMarker) {
+    let locationPanel = document.getElementById("locations");
+    
+    // clear(locationPanel);
+
+    locationPanel.style.justifyContent = "";
+    locationPanel.style.alignItems = "";
+    locationPanel.style.cssText = `
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                height: 100%;
+                overflow: auto;
+            `
+
+    console.log("Creating panel with" + nearestAEDS.length + " AEDs");
     for (let i = 0; i < nearestAEDS.length; i++) {
         let infoDiv = document.createElement("div");
         let buildingDiv = document.createElement("div");
@@ -305,6 +289,7 @@ function createPanel(panel, nearestAEDS, currMarker) {
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 150px;
             width: 100%;
             padding: 30px;
         `
@@ -394,8 +379,9 @@ function createPanel(panel, nearestAEDS, currMarker) {
                 }
             })
         });
-
-        panel.appendChild(newDiv);
+        
+        console.log("appending new div");
+        locationPanel.appendChild(newDiv);
     }
 }
 
@@ -407,8 +393,9 @@ function findNearestAED(currPosLatLng) {
     let address;
     let latLng;
 
-    console.log(currPosLatLng);
+    // console.log(currPosLatLng);
     // compute distances between each marker and location
+    console.log("Markers: " + markers.length);
     for(let i = 0; i < markers.length; i++) {
         distance = haversine_distance(markers[i][0], currPosLatLng);
 
@@ -419,13 +406,19 @@ function findNearestAED(currPosLatLng) {
     }
 
     // sort from smallest to largest - insertion sort
-    allDistances.sort(function(a, b) { return a[1] - b[1] });
+    allDistances.sort(cmpfnc)
+    // allDistances.sort(function(a, b) { return a[1] - b[1] });
 
     for(let i = 0; i < allDistances.length; i++) {
         console.log(allDistances[i][1]);
     }
 
     return allDistances; // I want to return the markers associated with the distance
+}
+
+function cmpfnc(a, b) {
+    // console.log("Comparing:" + a[1] + "and" + b[1]);
+    return a[1] - b[1];
 }
 
 // haversine formula for calculating distance in KM between two points on surface of a sphere
@@ -440,7 +433,6 @@ function haversine_distance(marker1, currLocation) {
     let difflon = (currLocation.lng()-marker1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
 
     let d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
-    console.log(d);
     return d;
 }
 

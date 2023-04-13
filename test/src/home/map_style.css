@@ -181,7 +181,7 @@ a {
 }
 
 #locations {
-    height: 800px;
+    height: 100%;
     width: 600px;
     display: flex;
     justify-content: center;
