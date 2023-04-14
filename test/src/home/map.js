@@ -300,7 +300,7 @@ function createPanel(nearestAEDS, currMarker) {
         let iconDiv = document.createElement("div");
         let icon = document.createElement("i");
         let distDiv = document.createElement("div");
-        
+    
         iconDiv.style.cssText = `
             display: flex;
             height: 50px;
@@ -315,6 +315,9 @@ function createPanel(nearestAEDS, currMarker) {
         `
 
         icon.classList.add('bx' , 'bx-map'); // add map icon
+        icon.style.cssText = `
+            font-size:1em;
+        `
         distDiv.innerHTML = parseFloat(nearestAEDS[i][1]).toFixed(2) + "km"; // truncate dist to 2 decimal places
         iconDiv.append(icon);
         iconDiv.append(distDiv);

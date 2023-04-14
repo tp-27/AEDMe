@@ -19,20 +19,29 @@ strong {
     font-size: 30px;
 }
 
-ol {
+.how-aed ol {
     list-style: none;
     counter-reset: item;
     padding-left: 40px;
 }
 
-li {
+.references ol {
+    padding-left: 300px;
+    margin-top: 50px;
+}
+
+.references li {
+    font-size: 20px;    
+}
+
+.how-aed li {
     counter-increment: item;
     margin-bottom: 5px;
-    font-size: 20px;
+    font-size: 25px;
     padding: 10px;
 }
 
-li:before {
+.how-aed li:before {
     margin-right: 10px;
     content: counter(item);
     background: rgba(188, 8, 8, 0.745);
@@ -227,6 +236,7 @@ span {
 
 .steps {
     padding-top: 30px;
+    font-size: 25px;
 }
 
 .aed-diagram {
@@ -257,4 +267,8 @@ h1 {
 
 p {
     font-size: 25px;
+}
+
+.references {
+    align-self: center;
 }

@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <title>Learn More</title>
         <link rel="stylesheet" href="./learn.css">
-        <!-- <link rel="stylesheet" href="./learn.js"> -->
     </head>
     <body>
         <div class="navigation">
@@ -42,37 +41,12 @@
                     resuscitation (CPR) compressions. The AED only delivers a shock if the heart is 
                     in a rhythm which can be corrected by defibrilation. 
                 </p>
+                <br><br>
                 <div class="SCA-fact">
-                    <span id="SCA">SCA is the 2nd leading cause of death in Canada <sup>1</sup></span>
+      
+                    <span id="SCA">Surival rate doubles if somebody performs CPR and uses an AED during a cardiac arrest.<sup>1</sup></span>
                 </div> 
             </div>
-            <div class="who-aed">
-                <div class="who-aed-text">
-                    <h1>Who can use an AED?</h1>
-                    <br>
-                    <br>
-                    <p>
-                        AEDs are designed to be easy to use and can be used by non-medical professionals such as first responders, police officers, and
-                        bystanders.
-                        <br><br>
-                        In Ontario, the use of AEDs by non-medical professionals is governed by the Good Samaritan Act. This act provides legal protection
-                        to individuals who use an AED in good faith to help someone in cardiac arrest. <sup>4</sup>
-                    </p>
-                </div>
-            
-                <div class="who-aed-img">
-                    <div class="circle-img-1">
-                        <img src="images/aed-use-1.png" alt="Person" id="fig-1" style="height: 130px; width: 130px">
-                    </div>
-                    <div class="circle-img-3">
-                        <img src="images/aed-use-3.png" alt="Person" id="fig-3" style="height: 150px; width: 150px">
-                    </div>
-                    <div class="circle-img-2">
-                        <img src="images/aed-use-2.png" alt="Person" id="fig-2" style="height: 140px; width: 140px">
-                    </div>
-                </div>
-            </div>
-        
             <div class="how-aed">
                 <h1>How to use an AED?</h1>
                 <p>
@@ -100,16 +74,49 @@
                 </div>
                 
                 <div class="how-video">
-                    <!-- <div class="how-video-text">Here is a video from the Heart and Stroke foundation of learning how to use an AED in 90 seconds</div> -->
-                    <iframe class="how-video-video" width="560" height="315" src="https://www.youtube.com/embed/DkVRqpQbQCY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe class="how-video-video" width="760" height="515" src="https://www.youtube.com/embed/DkVRqpQbQCY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="who-aed">
+                <div class="who-aed-text">
+                    <h1>Who can use an AED?</h1>
+                    <br>
+                    <br>
+                    <p>
+                        AEDs are designed to be easy to use and can be used by non-medical professionals such as first responders, police officers, and
+                        bystanders.
+                        <br><br>
+                        In Ontario, the use of AEDs by non-medical professionals is governed by the Good Samaritan Act. This act provides legal protection
+                        to individuals who use an AED in good faith to help someone in cardiac arrest. <sup>4</sup>
+                    </p>
+                </div>
+            
+                <div class="who-aed-img">
+                    <div class="circle-img-1">
+                        <img src="images/aed-use-1.png" alt="Person" id="fig-1" style="height: 130px; width: 130px">
+                    </div>
+                    <div class="circle-img-3">
+                        <img src="images/aed-use-3.png" alt="Person" id="fig-3" style="height: 150px; width: 150px">
+                    </div>
+                    <div class="circle-img-2">
+                        <img src="images/aed-use-2.png" alt="Person" id="fig-2" style="height: 140px; width: 140px">
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="references">
+            <ol>
+                <li><a href="https://www.heartandstroke.ca/how-you-can-help/learn-cpr/aeds">How you can help.</a> Heart and Stroke Foundation. Retrieved 14 April 2023.</li><br>
+                <li><a href="https://www.heartandstroke.ca/how-you-can-help/learn-cpr/aeds">How you can help</a> Heart and Stroke Foundation. Retrieved 14 April 2023.</li><br>
+                <li><a href="https://www.heartandstroke.ca/-/media/pdf-files/canada/other/pad-eng-final.ashx">Position Statement.</a> Heart and Stroke Foundation. Retrieved 14 April 2023.</li><br>
+                <li><a href="https://www.ontario.ca/laws/statute/07c10">Chase McEachern Act (2007).</a> Ontario Laws. Retrieved 14 April 2023.</li><br>
+            </ol>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
         <script>
-            var fact1 = 'Up to <span class="highlight">40,000</span> Canadians experience an out-of-hospital cardiac arrest each year. ^2000';
-            var fact2 = 'That amounts to one cardiac arrest every <span class="highlight">12 minutes.</span> ^2000';
-            var fact3 = 'The combined use of CPR and an AED may increase the likelihood of survival by <span class="highlight">75%</span> or more. ^2000';
+            var fact1 = 'Up to <span class="highlight">40,000</span> Canadians experience an out-of-hospital cardiac arrest each year. <sup>3</sup> ^2000';
+            var fact2 = 'That amounts to one cardiac arrest every <span class="highlight">12 minutes.</span><sup>3</sup> ^2000';
+            var fact3 = 'The combined use of CPR and an AED may increase the likelihood of survival by <span class="highlight">75%</span> or more.<sup>3</sup> ^2000';
             var typed = new Typed(".auto-type", {
                 strings: [fact1, fact2, fact3],
                 typeSpeed: 100, 
@@ -146,8 +153,8 @@
 
 <!-- Have the letters Automated Ext. Defib. show up as animation with each letter showing up
 
-https://www.heartandstroke.ca/how-you-can-help/learn-cpr/aeds
-https://www.heartandstroke.ca/how-you-can-help/advocate/restart-a-heart
+
+(2) https://www.heartandstroke.ca/how-you-can-help/advocate/restart-a-heart
 (3) https://www.heartandstroke.ca/-/media/pdf-files/canada/other/pad-eng-final.ashx 
 (4) https://www.ontario.ca/laws/statute/07c10
 
