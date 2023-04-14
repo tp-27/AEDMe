@@ -19,19 +19,36 @@ strong {
     font-size: 30px;
 }
 
+sup {
+    font-size: 15px;
+}
+
 .how-aed ol {
     list-style: none;
     counter-reset: item;
     padding-left: 40px;
 }
 
-.references ol {
-    padding-left: 300px;
+.references-div ul {
     margin-top: 50px;
+    margin-left: 90px;
+    list-style-type: none;
 }
 
-.references li {
+.references-div li {
     font-size: 20px;    
+}
+
+.references-div {
+    display: flex;
+    /* height: 400px; */
+    /* width: 900px; */
+    justify-content: center;
+    align-items: center;
+}
+
+.references-div li {
+    width: 600px;
 }
 
 .how-aed li {
@@ -267,8 +284,4 @@ h1 {
 
 p {
     font-size: 25px;
-}
-
-.references {
-    align-self: center;
 }
