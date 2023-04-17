@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/tp-27/AEDMe">
-    <img src="model_img/aed.svg" alt="Logo" width="100" height="100" class="filter-red">
+    <img src="screenshots/aed.svg" alt="Logo" width="100" height="100" class="filter-red">
   </a>
 
 <h3 align="center">AEDMe</h3>
