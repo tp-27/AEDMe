@@ -1,75 +1,103 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Add Map</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script type="module" src="./main.js"></script>
-  </head>
-  <body>
-    <div class="container">
-            <div class="prompt">Where are you?</h2>
-
-            <div class="select-box">
-                <div class="options-container">
-                    <div class="option">
-                        <input type="radio" class="radio" id="guelph" name="category">
-                        <label for="guelph">University of Guelph</a></label>
-                    </div>
-
-                    <div class="option">
-                        <input type="radio" class="radio" id="waterloo" name="category">
-                        <label for="waterloo">University of Waterloo</label>
-                    </div>
-            
-                    <div class="option">
-                        <input type="radio" class="radio" id="laurier" name="category">
-                        <label for="laurier">Laurier University</label>
-                    </div>
-            
-                    <div class="option">
-                        <input type="radio" class="radio" id="western" name="category">
-                        <label for="western">Western University</label>
-                    </div>
-            
-                    <div class="option">
-                        <input type="radio" class="radio" id="mcmaster" name="category">
-                        <label for="mcmaster">McMaster University</label>
-                    </div>
-
-                    <div class="option">
-                        <input type="radio" class="radio" id="toronto" name="category">
-                        <label for="toronto">University of Toronto</label>
-                    </div>
-
-                    <div class="option">
-                        <input type="radio" class="radio" id="brock" name="category">
-                        <label for="brock">Brock University</label>
-                    </div>
-                </div>
-
-                <div class="selected">
-                    Select your university
-                </div>
-
+    <head>
+        <meta charset="UTF-8">
+        <title>Home Page</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css">
+        <script type="module" src="./js/home.js"></script>
+    </head>
+    <body>
+        <div class="navigation">
+            <div class="other-pages">
+                <a href="./html/learn-more.html"><div class="nav-item">Learn More</div></a>
+                <a href="./html/register.html"><div class="nav-item">Register</div></a>
+                <a href="./html/contact.html"><div class="nav-item">Contact</div></a>
             </div>
-    </div>
-    
-    <!-- The div element for the map -->
-    <div class="middle-container">
-      <!-- <div class="closest-locations"></div> -->
-      <div id="map"></div>
-    </div>
+        </div>
 
+        <div class="middle-section">
+            <img src="./images/aed.svg"  class="aed-icon" alt="AED icon">
+            <div class="aed-me">AEDMe</div>
+       
+            <div class="select-menu">
+                <div class="select-btn">
+                    <span class="sBtn-text">Select your university</span>
+                    <i class="bx bx-chevron-down"></i>
+                </div>
+                <ul class="options">
+                    <li class="option">
+                        <span class="option-text" id="guelph">University of Guelph</span>
+                    </li>
+                    <li class="option">
+                        <span class="option-text" id="waterloo">University of Waterloo</span>
+                    </li>
+                    <li class="option">
+                        <span class="option-text" id="carleton">Carleton University</span>
+                    </li>
+                    <li class="option">
+                        <span class="option-text" id="ottawa">University of Ottawa</span>
+                    </li>
+                    <li class="option">
+                        <span class="option-text" id="toronto">University of Toronto</span>
+                    </li>
+                    <li class="option">
+                        <span class="option-text" id="mcmaster">McMaster University</span>
+                    </li>
+                    <li class="option">
+                        <span class="option-text" id="manitoba">University of Manitoba</span>
+                    </li>
+                    <li class="option">
+                        <span class="option-text" id="brock">Brock University</span>
+                    </li>
+                </ul>
+            </div> 
 
-    <!-- 
-      The `defer` attribute causes the callback to execute after the full HTML
-      document has been parsed. For non-blocking uses, avoiding race conditions,
-      and consistent behavior across browsers, consider loading using Promises
-      with https://www.npmjs.com/package/@googlemaps/js-api-loader.
-      -->
-    <script 
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzGghxXBLge_jHypQILU7-1evtXjBIUio"
-      defer
-    ></script>
-  </body>
+        </div>
+
+        <div class="university">
+            <div class="logo">
+                <a href="https://cso.uoguelph.ca/campus-safety/emergency-automated-external-defibrillator-aed-locations">
+                    <img src="./images/guelph_logo.svg" alt="University of Guelph Logo">
+                </a>    
+            </div>
+            <div class="logo">
+               <!-- <a href="https://uwaterloo.ca/safety-office/emergency-procedures/first-aid/automated-external-defibrillators-aeds/automated-external-defibrillators-aeds-locations"></a> -->
+                <img src="./images/waterloo_logo.svg" alt="University of Waterloo Logo">
+                    
+            </div>
+            <div class="logo">
+                <a href="https://carleton.ca/ehs/wp-content/uploads/AED-Locations-and-photos-May-2021.pdf">
+                    <img src="./images/carleton.svg" alt="Carleton Logo">
+                </a>
+            </div>
+            <div class="logo">
+                <a href="https://maps.uottawa.ca/">
+                    <img src="./images/ottawa.png" alt="University of Ottawa Logo">
+                </a>
+            </div>
+            <div class="logo">
+                <a href="https://www.utsc.utoronto.ca/ehs/first-aid-aeds">
+                    <img src="./images/toronto.svg" alt="University of Toronto Logo">
+                </a>
+            </div>
+            <div class="logo">
+                <a href="https://hr.mcmaster.ca/employees/health_safety_well-being/our-safety/automated-external-defibrillator-aed/automated-external-defibrillator-aed-locations/">
+                    <img src="./images/mcmaster.png" alt="Mcmaster Logo">
+                </a>
+            </div>
+            <div class="logo">
+                <a href="https://umanitoba.ca/environmental-health-and-safety/sites/environmental-health-and-safety/files/2021-03/university-aed-locations-20170203.pdf">
+                    <img src="./images/manitoba.png" alt="University of Manitoba Logo">
+                </a>
+            </div>
+            <div class="logo">
+                <a href="https://brocku.ca/human-resources/wp-content/uploads/sites/81/FAS-and-AED-Locations-Sept-2017.pdf">
+                    <img src="./images/brock.png" alt="Brock University Logo">
+                </a>
+            </div>
+        </div>
+
+    </body>
 </html>

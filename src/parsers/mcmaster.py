@@ -1,37 +1,71 @@
 from bs4 import BeautifulSoup
 import requests
 import csv
+import re
+import json
 
-def parse_mcmaster():
-    html_text = requests.get('https://libguides.mcmaster.ca/MacAED/CampusLocations').text
-    soup = BeautifulSoup(html_text, 'lxml')
-    table = soup.find_all('tr')
+#Notes
+# double check link isn't broken as well
+class ParseMcmaster:
+    allInfo = []
+    getInfo = []
 
-    location_data = ['']
-    row_csv = ['']
-    table_row = soup.find_all('td')
-    
-    #only need building and location
-    #building column some have child element with text field, some have text field within td 
-    with open('mcmaster.csv', 'w', newline='') as file:
-        writer = csv.writer(file)
+    def parse(self):
+        html_text = requests.get('https://libguides.mcmaster.ca/MacAED/CampusLocations', 'lxml').text
+        soup = BeautifulSoup(html_text, 'lxml')
+        aeds = soup.find_all('tr')
 
-        for row in table_row:
-            location_data.append(row.text)
+        header_row = 1
+        location = ""
+        building = ""
+   
+        for spot in aeds:
+            row = spot.find_all('td')
+     
+            if header_row: #discard header row
+                    header_row = 0
+                    pass
 
-        i = 0
-        writer.writerow("Location")
-        for location in location_data:
-            if (location == ""):
-                continue
             else:
-                if (i == 4):
-                    writer.writerow([row_csv[0], row_csv[1], row_csv[2], row_csv[3]])
-                    row_csv.clear()
-                    i = 0
-                    continue
-                row_csv.append(location)
-                print(location)
+                i = 0
+                for column in row:
+                    if (i == 1 or i == 2):
+                        if (i == 1):
+                            building = column.text.strip()
+                        
+                        elif (i == 2):
+                            location = column.text.strip()
+
+                    i += 1
+
+                self.getInfo.append(location)
+                self.getInfo.append(building)
+                self.allInfo.append(self.getInfo) 
+                self.getInfo = []
+
+        # print(self.allInfo)       
+
+    def saveToJSON(self):
+        locations_json = []
+
+        #create json
+        for info in self.allInfo:
+            if not info: #skip empty array
+                pass
             
-            i += 1
-parse_mcmaster()
+            else:
+                location = info[0]
+                building = info[1] + ", Hamilton ON"
+                locations_json.append({
+                    'location' : location,
+                    'building' : building,
+                })
+
+        #store results
+        with open('mcmaster_info.json', 'w') as f:
+            f.write(json.dumps(locations_json, indent = 2))
+
+
+locations = ParseMcmaster()
+locations.parse()
+locations.saveToJSON()
