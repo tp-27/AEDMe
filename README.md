@@ -82,7 +82,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Product Name Screen Shot][product-screenshot](https://example.com)
 
 
 This application displays to the user all of the nearest AEDs found on a selected campus based on the users' current location. The project currently serves 7 different universities and plans to reach many other univerisites in Ontario. This application is not affiliated with any of the listed universities. This application is meant to serve informational and educational purposes. 
@@ -116,20 +116,20 @@ This application displays to the user all of the nearest AEDs found on a selecte
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-[![Product Name Screen Shot][product-screenshot5]]
+![Product Name Screen Shot][product-screenshot5]
 <!-- 1. **Select a university campus** -->
 
-[![Product Name Screen Shot][product-screenshot2]]
+![Product Name Screen Shot][product-screenshot2]
 
 
 <!-- 2. **Click locate button** -->
 
-[![Product Name Screen Shot][product-screenshot3]]
+![Product Name Screen Shot][product-screenshot3]
 
 
 <!-- 3. **Select geolocate option (switch)** -->
 
-[![Product Name Screen Shot][product-screenshot4]]
+![Product Name Screen Shot][product-scrscreenshots
 
 
 
@@ -218,11 +218,11 @@ Project Link: [https://github.com/tp-27/AEDMe](https://github.com/tp-27/AEDMe)
 [license-url]: https://github.com/tp-27/AEDMe/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/phanthomas/
-[product-screenshot]: model_img/1.png
-[product-screenshot5]: model_img/5.png
-[product-screenshot2]: model_img/2.png
-[product-screenshot3]: model_img/3.png
-[product-screenshot4]: model_img/4.png
+[product-screenshot]: screenshots/1.png
+[product-screenshot5]: screenshots/5.png
+[product-screenshot2]: screenshots/2.png
+[product-screenshot3]: screenshots/3.png
+[product-screenshot4]: screenshots/4.png
 
 
 
