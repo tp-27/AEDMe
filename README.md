@@ -129,7 +129,6 @@ This application displays to the user all of the nearest AEDs found on a selecte
 
 <!-- 3. **Select geolocate option (switch)** -->
 
-![Product Name Screen Shot][product-scrscreenshots
 
 
 
