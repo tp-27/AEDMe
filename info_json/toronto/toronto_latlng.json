@@ -1,0 +1,47 @@
+[
+  {
+    "building": "Instructional Centre, Toronto ON",
+    "location": "Atrium near IC34",
+    "coordinates": "-79.18966054831932,  43.786773999999994"
+  },
+  {
+    "building": "Environmental Science & Chemistry Building, Toronto ON",
+    "location": "Atrium near EV161",
+    "coordinates": "-79.19050299687188,  43.787285"
+  },
+  {
+    "building": "Student Centre , Toronto ON",
+    "location": "2nd Floor near SL270 (Health and Wellness)",
+    "coordinates": "-79.39693405284022,  43.6591433"
+  },
+  {
+    "building": "Academic Resource Centre , Toronto ON",
+    "location": "In hallway across from Tim Hortons",
+    "coordinates": "-79.18639965621182,  43.784019650000005"
+  },
+  {
+    "building": "Humanities Wing , Toronto ON",
+    "location": "Hallway beside Tim Hortons kiosk",
+    "coordinates": "-79.18706197037525,  43.783111"
+  },
+  {
+    "building": "Science Wing , Toronto ON",
+    "location": "Main entrance near Code Blue phone",
+    "coordinates": "-79.18785366339827,  43.78348965"
+  },
+  {
+    "building": "Science Research Building , Toronto ON",
+    "location": "Hallway near SY116",
+    "coordinates": "-79.18944408811416,  43.78424305"
+  },
+  {
+    "building": "Social Sciences Building , Toronto ON",
+    "location": " Atrium near Code Blue phone",
+    "coordinates": "-79.18606427910845,  43.782798"
+  },
+  {
+    "building": "Residence Centre , Toronto ON",
+    "location": "Main common area near SVC121",
+    "coordinates": "-79.18517856067962,  43.783305999999996"
+  }
+]
