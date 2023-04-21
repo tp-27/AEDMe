@@ -213,7 +213,7 @@ function createMarkers(numLocations) {
         let theMarker = []
 
         const icon = {
-            url: "./images/heart.png", // url
+            url: "../images/heart.png", // url
             scaledSize: new google.maps.Size(35, 35), // scaled size
             origin: new google.maps.Point(0,0), // origin
             anchor: new google.maps.Point(0, 0) // anchor
@@ -434,7 +434,7 @@ function getLatLng(marker) {
 // create a marker for the current location
 function setCurrMarker(currLocation) {
     const icon = {
-        url: "./images/bluemark.png", // url
+        url: "../images/bluemark.png", // url
         scaledSize: new google.maps.Size(40, 40), // scaled size
         origin: new google.maps.Point(0,0), // origin
         anchor: new google.maps.Point(0, 0) // anchor
