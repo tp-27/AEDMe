@@ -18,13 +18,12 @@ options.forEach(option => {
     option.addEventListener("click", () => {
         selectedOption = option.querySelector(".option-text");
         sBtn_text.innerText = selectedOption.innerHTML;
-        // console.log(selectedOption);
         optionMenu.classList.remove("active");
         selectedCampus = selectedOption.id;
         console.log(selectedCampus);
 
         // go to map 
-        const url = `../html/map.html?campus=${selectedCampus}`;
+        const url = `../src/html/map.html?campus=${selectedCampus}`;
         window.location.href = url;
     });
 });
